@@ -30,6 +30,8 @@ gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'sprockets-rails'
 gem 'simple_form'
+gem 'rails_admin'
+gem 'cancancan', '~> 1.9'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
