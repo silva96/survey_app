@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141210001943) do
+ActiveRecord::Schema.define(version: 20141210035002) do
 
   create_table "roles", force: true do |t|
     t.string   "name",       limit: 20, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "surveys", force: true do |t|
+    t.string   "name"
+    t.string   "code"
+    t.text     "description"
+    t.datetime "active_from"
+    t.datetime "active_until"
+    t.boolean  "public"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
