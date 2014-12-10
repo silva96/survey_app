@@ -1,0 +1,8 @@
+<ul>
+  <% if user_signed_in? %>
+    <li><%= link_to('Cerrar Sesión', destroy_user_session_path, :method => :delete) %></li>
+  <% else %>
+    <li><%= link_to('Ingresa', new_user_session_path)  %></li>
+    <li><%= link_to('Regístrate', new_registration_path(:user))  %></li>
+  <% end %>
+</ul>
