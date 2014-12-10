@@ -1,2 +1,55 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
+.form-signin, .form-signup {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+  .form-sign-heading {
+    margin-bottom: 10px;
+  }
+  .checkbox {
+    margin-bottom: 10px;
+    font-weight: normal;
+  }
+  .form-group.email{
+    margin-bottom: 0px;
+  }
+  #user_email {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+    &:focus {
+      z-index: 2;
+    }
+  }
+}
+.form-signin{
+  #user_password {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+}
+.form-signup{
+  #user_password{
+    margin-bottom: -1px;
+    border-radius: 0;
+  }
+  #user_password_confirmation {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+  .form-group.password{
+    margin-bottom: 0px;
+  }
+}
