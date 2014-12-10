@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-
+  belongs_to :role, inverse_of: :users
   before_create :set_default_role
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
