@@ -3,10 +3,19 @@
     <div class="col-xs-12">
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:class => "form-signup"}) do |f| %>
         <h2 class="form-sign-heading">Please sign up</h2>
-        <%= f.input :email ,label: 'Email address', label_html: {class: 'sr-only'}, placeholder: 'Email adress', autofocus: true, required: true %>
+        <% if resource.errors.any? %>
+          <div class="bs-callout bs-callout-danger alert alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h5>There were <%= pluralize(resource.errors.count, "error") %> errors during registration:</h5>
+            <% resource.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </div>
+        <% end %>
+        <%= f.input :email ,label: 'Email address', label_html: {class: 'sr-only'}, placeholder: 'Email adress', autofocus: true, required: true,error: false %>
         <% hint='Password (' + @minimum_password_length.to_s + ' characters minimum)' if @validatable %>
-        <%= f.input :password ,label: 'Password', label_html: {class: 'sr-only'}, placeholder: hint ||= 'Password', required: true %>
-        <%= f.input :password_confirmation ,label: 'Confirm password', label_html: {class: 'sr-only'}, placeholder: 'Confirm password', required: true%>
+        <%= f.input :password ,label: 'Password', label_html: {class: 'sr-only'}, placeholder: hint ||= 'Password', required: true,error: false %>
+        <%= f.input :password_confirmation ,label: 'Confirm password', label_html: {class: 'sr-only'}, placeholder: 'Confirm password', required: true, error: false%>
 
         <%= f.button :submit, "Sign up", class: "btn btn-lg btn-primary btn-block" %>
         <%# render "devise/shared/links" %>
