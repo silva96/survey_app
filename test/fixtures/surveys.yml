@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  code: MyString
+  description: MyText
+  active_from: 2014-12-10 00:50:02
+  active_until: 2014-12-10 00:50:02
+  public: false
+
+two:
+  name: MyString
+  code: MyString
+  description: MyText
+  active_from: 2014-12-10 00:50:02
+  active_until: 2014-12-10 00:50:02
+  public: false

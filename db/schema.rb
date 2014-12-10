@@ -11,13 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141210035002) do
+ActiveRecord::Schema.define(version: 20141210041307) do
 
   create_table "roles", force: true do |t|
     t.string   "name",       limit: 20, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "sections", force: true do |t|
+    t.integer  "survey_id"
+    t.integer  "order"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sections", ["survey_id"], name: "index_sections_on_survey_id"
 
   create_table "surveys", force: true do |t|
     t.string   "name"
