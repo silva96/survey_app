@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  resources :users
-  resources :surveys do
-    member do
-      get 'respond'
-    end
-  end
   devise_for :users
   devise_scope :user do
     authenticated :user do
@@ -13,6 +7,12 @@ Rails.application.routes.draw do
     end
     unauthenticated do
       root 'devise/sessions#new', as: :unauthenticated_root
+    end
+  end
+  resources :users
+  resources :surveys do
+    member do
+      get 'respond'
     end
   end
   root 'home#index' #need to redeclare it if not using the devise_scope, for example -> unauthenticated user try /admin
