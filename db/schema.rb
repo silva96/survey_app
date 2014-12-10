@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141210041307) do
+ActiveRecord::Schema.define(version: 20141210043552) do
 
   create_table "roles", force: true do |t|
     t.string   "name",       limit: 20, null: false
@@ -20,10 +20,11 @@ ActiveRecord::Schema.define(version: 20141210041307) do
   end
 
   create_table "sections", force: true do |t|
-    t.integer  "survey_id"
-    t.integer  "order"
+    t.integer  "survey_id",             null: false
+    t.integer  "order",                 null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name",       limit: 20, null: false
   end
 
   add_index "sections", ["survey_id"], name: "index_sections_on_survey_id"

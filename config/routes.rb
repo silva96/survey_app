@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  resources :users
+  resources :surveys do
+    member do
+      get 'respond'
+    end
+  end
   devise_for :users
   devise_scope :user do
     authenticated :user do
