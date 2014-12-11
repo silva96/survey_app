@@ -3,9 +3,23 @@
     <div class="col-xs-12 col-sm-6 col-sm-offset-3" id="home-middle-container">
       <% if !@surveys.nil? %>
         <h3>Please select one survey to respond</h3>
-        <% @surveys.each do |s| %>
-          <li><%= link_to s.name, respond_survey_path(s) %></li>
-        <% end %>
+        <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>Name</th><th>Code</th><th>Active from</th><th>Active Until</th>
+            </tr>
+          </thead>
+          <tbody>
+          <% @surveys.each do |s| %>
+            <tr>
+              <td><%= link_to s.name, survey_section_path(s,s.sections.first) %></td>
+              <td><%= s.code %></td>
+              <td><%=s.active_from %></td>
+              <td><%=s.active_until %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
       <% else %>
         <h3>There are no surveys</h3>
       <% end %>

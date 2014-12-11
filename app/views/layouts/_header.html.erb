@@ -1,22 +1,19 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="header-nav">
   <div class="container">
-    <div class="col-xs-2" id="steps-header">
-      <%= yield(:steps) %>
+    <div class="col-xs-3" id="steps-header">
       <% if content_for?(:steps) %>
-        <%= yield(:steps) %>
-      <% else %>
         <p>Step</p>
-        <p>2 of 3</p>
+        <p><%= yield(:steps) %></p>
       <% end %>
     </div>
-    <div class="col-xs-8" id="center-header">
+    <div class="col-xs-6" id="center-header">
       <% if content_for?(:brand) %>
         <%= yield(:brand) %>
       <% else %>
         <h3>fosubo</h3>
       <% end %>
     </div>
-    <div class="col-xs-2" id="right-header">
+    <div class="col-xs-3" id="right-header">
       <div class="dropdown">
         <button class="header-dropdown dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
           Menú

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  response_set_id: 
+  answer_id: 
+  text_value: MyText
+
+two:
+  response_set_id: 
+  answer_id: 
+  text_value: MyText

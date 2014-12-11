@@ -20,13 +20,33 @@ RailsAdmin.config do |config|
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory
-    new
+    new do
+      except ['Answer', 'ResponseSet', 'Response']
+    end
     export
     bulk_delete
     show
-    edit
+    edit do
+      except ['ResponseSet', 'Response']
+    end
     delete
     show_in_app
+
+    config.model Section do
+      edit do
+        field :survey
+        field :name
+        field :order
+        field :questions
+      end
+    end
+    config.model Question do
+      edit do
+        field :section
+        field :type
+        field :text
+      end
+    end
 
     ## With an audit adapter, you can add:
     # history_index
