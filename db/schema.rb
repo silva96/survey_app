@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141211050305) do
+ActiveRecord::Schema.define(version: 20141211214517) do
 
   create_table "answers", force: true do |t|
     t.integer  "question_id", null: false
@@ -50,9 +50,11 @@ ActiveRecord::Schema.define(version: 20141211050305) do
     t.text     "text_value",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "question_id",     null: false
   end
 
   add_index "responses", ["answer_id"], name: "index_responses_on_answer_id"
+  add_index "responses", ["question_id"], name: "index_responses_on_question_id"
   add_index "responses", ["response_set_id"], name: "index_responses_on_response_set_id"
 
   create_table "roles", force: true do |t|

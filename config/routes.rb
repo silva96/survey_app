@@ -11,7 +11,11 @@ Rails.application.routes.draw do
   end
   resources :users
   resources :surveys do
+    member do
+      get 'thanks'
+    end
     resources :sections
+    resources :response_sets
   end
   root 'home#index' #need to redeclare it if not using the devise_scope, for example -> unauthenticated user try /admin
 end

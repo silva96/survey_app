@@ -2,47 +2,62 @@
   <h3><%= @survey.name %></h3>
 <% end %>
 <% content_for :steps do %>
-  <% if @current_section > 1 %>
+  <% if @current_section_index > 1 %>
     <span class="glyphicon glyphicon-chevron-left pull-left go-back"></span>
     <%= link_to(survey_section_path(@survey,@previous_section)) do %>
       <p>Step</p>
-      <p><%= "#{@current_section} of #{@total_sections}" %></p>
+      <p><%= "#{@current_section_index} of #{@total_sections}" %></p>
     <% end %>
   <% else %>
     <p>Step</p>
-    <p><%= "#{@current_section} of #{@total_sections}" %></p>
+    <p><%= "#{@current_section_index} of #{@total_sections}" %></p>
   <% end %>
 <% end %>
-<div class="container">
-  <% @section.questions.each do |q| %>
-  <div class="row question">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-      <h4 style="font-weight: normal;text-align: center;"><%= q.text %></h4>
-      <div class="row">
-        <% first = true %>
-        <% if q.type.name == 'satisfaction-100' %>
-          <% q.answers.each do |a| %>
-          <div class="answer col-xs-2<%= ' col-xs-offset-1' if first%>">
-            <p><%= a.value %></p>
-          </div>
-          <% first= false %>
+<div class="container" id="survey_container">
+  <%= form_for([@survey, @response_set]) do |f| %>
+    <%= f.hidden_field(:section_id,{:value => @section.id}) %>
+    <% @section.questions.each do |q| %>
+      <div class="row question" data-question-id="<%= q.id %>">
+        <% if !@responses.nil? #TODO need to optimize this... %>
+          <% resp=@responses.select { |response| response.question_id == q.id } %>
+          <% if !resp.empty? %>
+            <% value = resp.first.answer_id %>
+          <% else %>
+            <% value = "" %>
           <% end %>
-        <% elsif q.type.name == 'free-text' %>
-          <div class="answer col-xs-12">
-            <textarea class="form-control"></textarea>
+        <% else %>
+          <% value = "" %>
+        <% end %>
+        <%= hidden_field_tag("answer[" + q.id.to_s + "]",value,class: "answer-hidden-field") if q.type.name == 'satisfaction-100' %>
+        <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+          <h4 style="font-weight: normal;text-align: center;"><%= q.text %></h4>
+          <div class="row">
+            <% first = true %>
+            <% if q.type.name == 'satisfaction-100' %>
+              <% q.answers.each do |a| %>
+                <div data-answer-id="<%= a.id %>" class="answer col-xs-2<%= ' col-xs-offset-1' if first%>">
+                  <p><%= a.value %></p>
+                </div>
+                <% first= false %>
+              <% end %>
+            <% elsif q.type.name == 'free-text' %>
+              <div class="col-xs-12">
+                <textarea class="form-control answer-hidden-field" id="answer_<%= q.id.to_s %>" name="<%= "answer[" + q.id.to_s + "]" %>"></textarea>
+              </div>
+            <% end %>
           </div>
+        </div>
+      </div>
+    <% end %>
+    <div class="row next-step">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+        <% if !@next_section.nil? %>
+          <%= f.submit "NEXT", class: "btn btn-primary btn-lg btn-block" %>
+        <% else %>
+          <%= f.submit "FINISH", class: "btn btn-primary btn-lg btn-block" %>
         <% end %>
       </div>
     </div>
-  </div>
-  <% end %>
-  <div class="row next-step">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-      <% if !@next_section.nil? %>
-        <%= link_to("NEXT", survey_section_path(@survey, @next_section),class: 'btn btn-primary btn-lg btn-block') %>
-      <% else %>
-        <%= link_to("FINISH", "/", class: 'btn btn-primary btn-lg btn-block') %>
     <% end %>
-    </div>
-  </div>
 </div>
+<%= @response_set.inspect unless @response_set.nil? %>

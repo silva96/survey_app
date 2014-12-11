@@ -1,8 +1,8 @@
 require 'test_helper'
 
 class SurveysControllerTest < ActionController::TestCase
-  test "should get index" do
-    get :index
+  test "should get thanks" do
+    get :thanks
     assert_response :success
   end
 
