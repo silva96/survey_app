@@ -34,7 +34,7 @@
           <div class="row">
             <% first = true %>
             <% if q.type.name == 'satisfaction-100' %>
-              <% q.answers.each do |a| %>
+              <% q.answers.reverse.each do |a| %>
                 <div data-answer-id="<%= a.id %>" class="answer col-xs-2<%= ' col-xs-offset-1' if first%>">
                   <p><%= a.value %></p>
                 </div>
