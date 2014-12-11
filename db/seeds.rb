@@ -37,7 +37,7 @@ s = Survey.find_or_create_by(name: 'T-Mobile') do |survey|
   survey.active_until = "2015-04-01 01:25:00"
   survey.public = true
 end
-sect=Section.create(order: n, name: "Step 1", survey: s)
+sect=Section.create(order: 0, name: "Step 1", survey: s)
 Question.create(section: sect, type: Type.find_by_name('satisfaction-100'), text: "Overall satisfaction of service:")
 Question.create(section: sect, type: Type.find_by_name('satisfaction-100'), text: "Professionalism and Courtesy of employee")
 Question.create(section: sect, type: Type.find_by_name('satisfaction-100'), text: "How satisfied were you with the wait time at this store?")
