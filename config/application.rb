@@ -22,6 +22,7 @@ module FosuboSurvey
     config.i18n.default_locale = :en
     config.i18n.enforce_available_locales = false
     config.i18n.available_locales = [:en, :es, :fr]
+    config.serve_static_assets = true
 
   end
 end
