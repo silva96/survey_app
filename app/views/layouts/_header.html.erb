@@ -30,8 +30,15 @@
           <% end %>
           <li class="divider"></li>
           <li role="presentation" class="dropdown-header">Switch Language</li>
-          <li role="presentation"><%= link_to "Español", lang: :es %></li>
-          <li role="presentation"><%= link_to "Français", lang: :fr %></li>
+          <% unless I18n.locale == :es %>
+            <li role="presentation"><%= link_to "Español", lang: :es %></li>
+          <% end %>
+          <% unless I18n.locale == :fr %>
+            <li role="presentation"><%= link_to "Français", lang: :fr %></li>
+          <% end %>
+          <% unless I18n.locale == :en %>
+            <li role="presentation"><%= link_to "English", lang: :en %></li>
+          <% end %>
         </ul>
       </div>
     </div>
