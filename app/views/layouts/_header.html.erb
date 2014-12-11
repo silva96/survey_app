@@ -1,8 +1,39 @@
-<ul>
-  <% if user_signed_in? %>
-    <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
-  <% else %>
-    <li><%= link_to('Sign In', new_user_session_path)  %></li>
-    <li><%= link_to('Sign Up', new_registration_path(:user))  %></li>
-  <% end %>
-</ul>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="header-nav">
+  <div class="container">
+    <div class="col-xs-2" id="steps-header">
+      <%= yield(:steps) %>
+      <% if content_for?(:steps) %>
+        <%= yield(:steps) %>
+      <% else %>
+        <p>Step</p>
+        <p>2 of 3</p>
+      <% end %>
+    </div>
+    <div class="col-xs-8" id="center-header">
+      <% if content_for?(:brand) %>
+        <%= yield(:brand) %>
+      <% else %>
+        <h3>fosubo</h3>
+      <% end %>
+    </div>
+    <div class="col-xs-2" id="right-header">
+      <div class="dropdown">
+        <button class="header-dropdown dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+          Menú
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu1"><% if user_signed_in? %>
+            <li role="presentation"><%= link_to('Logout', destroy_user_session_path, :method => :delete, html: {role: "menuitem"}) %></li>
+          <% else %>
+            <li role="presentation"><%= link_to('Login', new_user_session_path, html: {role: "menuitem"})  %></li>
+            <li role="presentation"><%= link_to('Register', new_registration_path(:user), html: {role: "menuitem"})  %></li>
+          <% end %>
+          <li class="divider"></li>
+          <li role="presentation" class="dropdown-header">Switch Language</li>
+          <li role="presentation"><%= link_to "Español", lang: :es %></li>
+          <li role="presentation"><%= link_to "Français", lang: :fr %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

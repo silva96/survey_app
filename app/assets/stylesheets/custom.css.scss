@@ -1,5 +1,49 @@
+$navbar-inverse-bg:#566473;
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
+body{
+  margin-top: 70px;
+}
+#header-nav{
+  #center-header{
+    background-color: #39434d;
+  }
+  #steps-header{
+    text-align: left;
+    p:first-child{
+      margin-top: 5px;
+      margin-bottom: 0;
+      font-size: 1em;
+    }
+    p:last-child{
+      font-size: 1.4em;
+      font-weight: normal;
+      margin-bottom: 0;
+    }
+  }
+  #right-header{
+    text-align: right;
+    .header-dropdown{
+      width:100%;
+      background-color: $navbar-inverse-bg;
+      width: 100%;
+      border: none;
+      padding: 18px 0;
+
+    }
+  }
+  .container{
+    padding-left:0;
+    padding-right: 0;
+    color:white;
+    text-align: center;
+  }
+  h3{
+    text-transform: uppercase;
+    margin: 15px 0;
+    font-weight: bold;
+  }
+}
 .form-signin, .form-signup {
   max-width: 330px;
   padding: 15px;
