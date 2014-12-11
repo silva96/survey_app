@@ -1,3 +1,3 @@
 class Type < ActiveRecord::Base
-  has_many :questions, inverse_of: Type
+  has_many :questions, inverse_of: :type
 end

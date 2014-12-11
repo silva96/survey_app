@@ -2,8 +2,7 @@
   <div class="container">
     <div class="col-xs-3" id="steps-header">
       <% if content_for?(:steps) %>
-        <p>Step</p>
-        <p><%= yield(:steps) %></p>
+        <%= yield(:steps) %>
       <% end %>
     </div>
     <div class="col-xs-6" id="center-header">
