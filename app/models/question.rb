@@ -6,6 +6,7 @@ class Question < ActiveRecord::Base
   after_create :create_answers_if
 
   private
+  #TODO need to add logic for optional questions and mandatory
   def create_answers_if
     if self.type.name == 'satisfaction-100'
       5.times do |n|

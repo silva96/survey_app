@@ -10,7 +10,7 @@ ready = ->
     $("#answer_" + $(this).parents(".question").data("question-id")).val $(this).data("answer-id")
     return
 
-  $("#new_response_set, #edit_response_set_17").submit ->
+  $("#new_response_set, .edit_response_set").submit ->
     errors = false
     $(".answer-hidden-field").each (index) ->
       if $(this).val() is ""
