@@ -1,13 +1,13 @@
 == README
+Survey App
+demo: http://fosubo-survey.herokuapp.com
+admin: admin@fosubo.com
+pass: admin123
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
+* Ruby 2.1.4, Rails 4.1.17
 
 * System dependencies
+CanCanCan,Devise,Rails_Admin
 
 * Configuration
 
